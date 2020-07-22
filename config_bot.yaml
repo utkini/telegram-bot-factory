@@ -1,0 +1,37 @@
+server-url: http://localhost:8000/
+server-login: user
+server-password: password
+
+bot-token: YOUR_BOT_TOKEN
+chat-id: ALLOW_CHAT_ID # not supported right now
+
+extensions:
+  - name: tables
+    type: &tables
+      - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      - text/csv
+  - name: photo
+    type: &photo
+      - jpg
+
+
+actions:
+  start:
+    response-msg: This is a test welcome message!
+  help:
+    response-msg: ask dummy@bot.com
+  behaviors:
+    commands:
+      - name: do_it
+        webhook: do-it-trigger/
+      - name: another_do_it
+        webhook: another-do-it-trigger/
+    files:
+      - type: *tables
+        webhook: do-something-with-table/
+      - type: *photo
+        webhook: do-something-with-photo/
+    regexp:
+      - pattern: a*
+        webhook: trigger-on-pattern/
+
