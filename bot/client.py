@@ -33,27 +33,29 @@ class BaseClient:
         self.session.mount('http://', adapter)
         self.session.mount('https://', adapter)
 
-    def get(self, url, **url_params) -> r.Response:
+    def get(self, endpoint, **url_params) -> r.Response:
         """ GET request
 
-        :param url: full url
+        :param endpoint: endpoint for request
         :param url_params: params for GET not supported
         :return: request.Response object
         """
+        url = self.base_url + endpoint
         LOG.info(f'GET request on {url}')
         response = self.session.request(method='GET', url=url)
         LOG.info(f'finished with {response}')
 
         return response
 
-    def post(self, url, body=None, file=None) -> r.Response:
+    def post(self, endpoint, body=None, file=None) -> r.Response:
         """ POST request
 
-        :param url: full url
+        :param endpoint: endpoint for request
         :param body: request body
         :param file: file for sending
         :return: requests.Response object
         """
+        url = self.base_url + endpoint
         files_data = {}
         if file is not None:
             files_data['file'] = file
