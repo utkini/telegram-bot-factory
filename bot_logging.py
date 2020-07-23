@@ -10,7 +10,7 @@ LOG = logging.getLogger(bot_logger)
 
 
 def init_logger() -> None:
-    """ initialization of SRA default logger
+    """ initialization default logger
 
     :return: logger
     """
