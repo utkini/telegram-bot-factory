@@ -1,6 +1,6 @@
 from aiohttp import web
 
-from bot_logging import LOG
+from bot_logging import LOG, init_logger
 import importlib
 
 from bot import updater
@@ -28,6 +28,7 @@ def initialize_bot():
     # updater.idle()
 
 
+init_logger()
 initialize_bot()
 app = web.Application()
 app.add_routes(routes)
