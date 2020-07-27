@@ -39,6 +39,13 @@ class YAMLReader:
                 return file_type.get('name')
 
     @property
+    def allow_chat_ids(self):
+        chat_ids = self.data.get('allow-chat-ids')
+        if isinstance(chat_ids, list):
+            return chat_ids
+        return [chat_ids]
+
+    @property
     def bot_token(self):
         return self.data.get('bot-token')
 
@@ -85,4 +92,3 @@ class YAMLReader:
 
 yaml_path = 'config_bot.yaml'
 CONFIG = YAMLReader(yaml_path=yaml_path)
-

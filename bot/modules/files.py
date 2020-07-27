@@ -37,6 +37,7 @@ for extensions, endpoint in CONFIG.get_files():
             filters = Filters.document.mime_type(extension)
         else:
             filters |= Filters.document.mime_type(extension)
+    filters &= Filters.chat(chat_id=CONFIG.allow_chat_ids)
     matcher[endpoint] = filters
     supported_handlers.append(MessageHandler(filters, files_callback))
 

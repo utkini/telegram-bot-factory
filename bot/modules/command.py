@@ -17,7 +17,7 @@ def command_callback(update, context):
 
 command_handlers = tuple(
     [
-        CommandHandler([command], command_callback, filters=Filters.private)
+        CommandHandler([command], command_callback, filters=Filters.chat(chat_id=CONFIG.allow_chat_ids))
         for command, _ in CONFIG.get_commands()
     ]
 )

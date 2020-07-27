@@ -3,7 +3,8 @@ server-login: user
 server-password: password
 
 bot-token: YOUR_BOT_TOKEN
-chat-id: ALLOW_CHAT_ID # not supported right now
+allow-chat-ids:
+  - ALLOW_CHAT_IDS
 
 extensions:
   - name: tables

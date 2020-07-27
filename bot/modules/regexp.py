@@ -18,7 +18,9 @@
 #
 # command_handlers = tuple(
 #     [
-#         CommandHandler(Filters.regex(regexp_pattern), general_callback, filters=Filters.private)
+#         CommandHandler(Filters.regex(regexp_pattern),
+#                        general_callback,
+#                        filters=Filters.chat(chat_id=CONFIG.allow_chat_ids))
 #         for regexp_pattern, _ in CONFIG.get_regexp()
 #     ]
 # )

@@ -8,7 +8,8 @@ from config import CONFIG
 
 def start_message(update, context):
     LOG.info('/start command')
-    context.bot.send_message(chat_id=update.effective_chat.id, text=CONFIG.start_description)
+    ans_msg = f'{CONFIG.start_description}\n your chat_id is: {update.effective_chat.id}'
+    context.bot.send_message(chat_id=update.effective_chat.id, text=ans_msg)
 
 
 def help_message(update, context):
@@ -19,6 +20,6 @@ def help_message(update, context):
 class Module:
     name = 'common'
     handlers = (
-        CommandHandler(['help'], help_message, filters=Filters.private),
+        CommandHandler(['help'], help_message, filters=Filters.chat(chat_id=CONFIG.allow_chat_ids)),
         CommandHandler(['start'], start_message, filters=Filters.private),
     )
